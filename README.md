@@ -17,7 +17,7 @@
 
 Because I am too lazy and this implementation is enough anyway
 
-- AI (currently implemeted as random choice, feel free to replace function with something better)
+- AI (currently implemeted as random choice, feel free to replace function with algo of your choice)
 - IndexError handling
 
 ## Initial implementation plan
