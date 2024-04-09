@@ -17,10 +17,13 @@
 
 Because I am too lazy and this implementation is enough anyway
 
-- AI (currently replaced with random choice, feel free to replace function with something better)
+- AI (currently implemeted as random choice, feel free to replace function with something better)
 - IndexError handling
+- Draw (can just check if no "." in board)
 
-## Initial implementation plan (not fully matched)
+## Initial implementation plan
+
+(not fully matched)
 
 ### What is the flaw?
 
