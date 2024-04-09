@@ -94,6 +94,10 @@ def check_winning_combination(crosses):
     if [board[i][2 - i] for i in range(3)].count(x_or_o) == 3:
         print(f"{x_or_o} wins!")
         exit()
+    # check if whole board occupied
+    if sum(["." not in row for row in board]) == 3:
+        print("Draw!")
+        exit()
 
 
 def reinput(func):
