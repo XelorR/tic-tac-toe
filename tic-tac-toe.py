@@ -11,7 +11,8 @@ def init_game():
     ai = (
         False
         if input(
-            "Do You want to play with AI(a) or Human?(h). Default --- Human.\nYour choice: "
+            "Do You want to play with AI(a) or Human?(h). Default --- Human."
+            + "\nYour choice: "
         ).upper()
         in ["H", ""]
         else True
@@ -19,7 +20,7 @@ def init_game():
     player_one_plays_crosses = (
         (
             True
-            if input("Please select X or O. Default --- X\nYour choise: ").upper()
+            if input("Please select X or O. Default --- X" + "\nYour choise: ").upper()
             in ["X", ""]
             else False
         )
@@ -33,7 +34,7 @@ board = [["." for _ in range(3)] for _ in range(3)]
 
 
 def print_board():
-    """Printing current board state."""
+    """Print current board state."""
     print("| \\ | 0 | 1 | 2 |")
     print("|---+---+---+---|")
     for i, row in enumerate(board):
