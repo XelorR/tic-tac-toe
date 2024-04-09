@@ -55,9 +55,8 @@ def get_user_input(crosses):
                     "",
                     input(
                         f"\n{x_or_o} turn.\n"
-                        + "Provide row and column coords, "
-                        + "separated by space"
-                        + "(two numbers like '2 1', '21', other symbols ignored)"
+                        + "Provide row and column coords "
+                        + "(two numbers like '2 1' or '21', other symbols ignored)"
                         + "\nYour choice: "
                     ),
                 )
