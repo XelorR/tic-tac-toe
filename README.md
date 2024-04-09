@@ -1,6 +1,6 @@
 # Tic-Tac-Toe game
 
-![](screenshot.png)
+![](screencast.webm)
 
 [The File](./tic-tac-toe.py)
 
