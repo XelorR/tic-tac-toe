@@ -2,7 +2,8 @@
 
 """Tic-Tac-Toe game."""
 
-import re, random
+import re
+import random
 
 
 def init_game():
@@ -33,7 +34,7 @@ board = [["." for _ in range(3)] for _ in range(3)]
 
 def print_board():
     """Printing current board state."""
-    print("| \ | 0 | 1 | 2 |")
+    print("| \\ | 0 | 1 | 2 |")
     print("|---+---+---+---|")
     for i, row in enumerate(board):
         print(f"| {i} |", end="")
@@ -67,6 +68,8 @@ def get_user_input(crosses):
 
 def get_ai_input(crosses):
     """Get coordinates from algorithm."""
+    x_or_o = "X" if crosses else "O"
+    print(f"\n{x_or_o} turn (AI).")
     while True:
         x, y = random.randint(0, 2), random.randint(0, 2)
         if board[x][y] == ".":
@@ -112,6 +115,7 @@ def reinput(func):
 
 def play(ai, crosses):
     """Play loop."""
+    print("\nBlank field:")
     print_board()
     while True:
         x_or_o = "X" if crosses else "O"
