@@ -70,37 +70,66 @@ def get_user_input(crosses):
 def get_ai_input(crosses):
     """Get coordinates from algorithm."""
     x_or_o = "X" if crosses else "O"
+    opponent = "O" if crosses else "X"
     print(f"\n{x_or_o} turn (AI).")
+
+    # Check for winning move
+    for i in range(3):
+        for j in range(3):
+            if board[i][j] == ".":
+                board[i][j] = x_or_o
+                if check_winning_combination(crosses):
+                    board[i][j] = "."
+                    return [i, j]
+                board[i][j] = "."
+
+    # Check for blocking move
+    for i in range(3):
+        for j in range(3):
+            if board[i][j] == ".":
+                board[i][j] = opponent
+                if check_winning_combination(not crosses):
+                    board[i][j] = "."
+                    return [i, j]
+                board[i][j] = "."
+
+    # Make a random move
     while True:
         x, y = random.randint(0, 2), random.randint(0, 2)
         if board[x][y] == ".":
             return [x, y]
 
 
-def check_winning_combination(crosses):
+def check_winning_combination(crosses, verbose=False):
     """Check winning combination."""
     x_or_o = "X" if crosses else "O"
     # check rows
     for row in board:
         if row.count(x_or_o) == 3:
-            print(f"{x_or_o} wins!")
-            exit()
+            if verbose:
+                print(f"{x_or_o} wins!")
+            return True
     # check columns
     for col in range(3):
         if [row[col] for row in board].count(x_or_o) == 3:
-            print(f"{x_or_o} wins!")
-            exit()
+            if verbose:
+                print(f"{x_or_o} wins!")
+            return True
     # check diagonals
     if [board[i][i] for i in range(3)].count(x_or_o) == 3:
-        print(f"{x_or_o} wins!")
-        exit()
+        if verbose:
+            print(f"{x_or_o} wins!")
+        return True
     if [board[i][2 - i] for i in range(3)].count(x_or_o) == 3:
-        print(f"{x_or_o} wins!")
-        exit()
+        if verbose:
+            print(f"{x_or_o} wins!")
+        return True
     # check if whole board occupied
     if sum(["." not in row for row in board]) == 3:
-        print("Draw!")
-        exit()
+        if verbose:
+            print("Draw!")
+        return True
+    return False
 
 
 def reinput(func):
@@ -133,7 +162,8 @@ def play(ai, crosses):
         board[xy[0]][xy[1]] = x_or_o
 
         print_board()
-        check_winning_combination(crosses)
+        if check_winning_combination(crosses, verbose=True):
+            exit()
         crosses = not crosses
 
 
